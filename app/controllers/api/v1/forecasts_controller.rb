@@ -5,11 +5,8 @@ module Api
     class ForecastsController < ApplicationController
       def index
         coordinates = LocationFacade.get_coordinates(params[:location])
-        require "pry";binding.pry
-        # page = [params.fetch(:page, 1).to_i, 1].max
-        # per_page = params.fetch(:per_page, 20).to_i
-        # forecasts = Forecast.offset((page - 1) * per_page).limit(per_page)
-        # render json: ForecastSerializer.new(forecasts)
+        forecasts = WeatherFacade.get_weather(coordinates)
+        render json: WeatherSerializer.new(forecasts)
       end
       # 
       # def show

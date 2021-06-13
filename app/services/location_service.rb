@@ -7,8 +7,7 @@ class LocationService
   end
   
   def self.get_coordinates(city_and_state)
-    q = parse_json(conn(city_and_state).get("/geocoding/v1/address"))[:results]
-    require "pry";binding.pry
+    parse_json(conn(city_and_state).get("/geocoding/v1/address"))
   end
   
   def self.parse_json(response)
