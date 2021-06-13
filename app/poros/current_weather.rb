@@ -1,5 +1,5 @@
 class CurrentWeather
-  attr_reader :date_time,
+  attr_reader :datetime,
               :sunrise,
               :sunset,
               :temperature,
@@ -11,7 +11,7 @@ class CurrentWeather
               :icon
   
   def initialize(response)
-    @date_time = Time.at(response[:dt])
+    @datetime = Time.at(response[:dt])
     @sunrise = Time.at(response[:sunrise])
     @sunset = Time.at(response[:sunset])
     @temperature = response[:temp]
@@ -19,7 +19,7 @@ class CurrentWeather
     @humidity = response[:humidity]
     @uvi = response[:uvi]
     @visibility = response[:visibility]
-    @conditions = response[:weather][0][:descriptions]
+    @conditions = response[:weather][0][:description]
     @icon = response[:weather][0][:icon]
   end
 end

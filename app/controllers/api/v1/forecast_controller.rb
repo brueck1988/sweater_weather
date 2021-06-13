@@ -2,11 +2,11 @@
 
 module Api
   module V1
-    class ForecastsController < ApplicationController
+    class ForecastController < ApplicationController
       def index
         coordinates = LocationFacade.get_coordinates(params[:location])
-        forecasts = WeatherFacade.get_weather(coordinates)
-        render json: WeatherSerializer.new(forecasts)
+        forecasts = ForecastFacade.get_forecasts(coordinates.latitude, coordinates.longitude)
+        render json: ForecastSerializer.new(forecasts)
       end
       # 
       # def show
