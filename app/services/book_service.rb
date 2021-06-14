@@ -1,12 +1,11 @@
 class BookService
-  def self.get_forecasts(query)
-    parse_json(conn(query).get("/search.json"))
+  def self.get_forecasts(query_location)
+    parse_json(conn(query_location).get("/search.json"))
   end
   
-  def self.conn(query)
+  def self.conn(query_location)
     Faraday.new(url: 'http://openlibrary.org') do |faraday|
-      faraday.params['q'] = query
-      faraday.params['subject'] = "guidebooks"
+      faraday.params['q'] = query_location
     end
   end
   

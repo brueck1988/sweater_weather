@@ -2,17 +2,14 @@ class Books
   attr_reader :id,
               :destination,
               :forecast,
-              :total_books_found
-              
-              
-              :title,
-              :author
+              :total_books_found,
+              :books
 
-  def initialize(books_data, weather_data, search_query, search_quantity)
+  def initialize(books_data, weather_data, query_location, query_quantity)
     @id = nil
-    @destination = search_query
+    @destination = query_location
     @forecast = DestinationForecast.new(weather_data)
-    @total_books_found = 
-    @books = books_data.first(search_quantity).map {|book| BookInfo.new(book)}
+    @total_books_found = books_data[:numFound]
+    @books = books_data[:docs].first(query_quantity.to_i).map {|book_data| BookInfo.new(book_data)}
   end
 end
