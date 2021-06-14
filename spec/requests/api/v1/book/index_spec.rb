@@ -3,7 +3,7 @@
 require 'rails_helper'
 RSpec.describe 'Forecast API', :vcr do
   it 'happy path, sends book info for a given city' do
-    get "/search.json?q=san francisco&subject=guidebooks"
+    get "/api/v1/book-search?location=denver,co&quantity=5"
     books = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
