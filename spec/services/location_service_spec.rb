@@ -18,14 +18,14 @@ describe LocationService, :vcr do
         expect(coordinate_data[:results][0][:locations][0][:latLng][:lng]).to eq(-104.984853)
       end
       
-      xit 'SAD PATH -Location Service does not get coordinates when location input is incorrect', :vcr do
-        location = "ewfhwhowehf"
-        coordinate_data = LocationService.get_coordinates(location)
-        
-        expect(coordinate_data).to be_a(Hash)
-        expect(coordinate_data[:info][:statuscode]).to eq(400)
-        expect(coordinate_data[:info][:messages][0]).to eq("Search input returned no results")
-      end
+      # xit 'SAD PATH -Location Service does not get coordinates when location input is incorrect', :vcr do
+      #   location = "ewfhwhowehf"
+      #   coordinate_data = LocationService.get_coordinates(location)
+      # 
+      #   expect(coordinate_data).to be_a(Hash)
+      #   expect(coordinate_data[:info][:statuscode]).to eq(400)
+      #   expect(coordinate_data[:info][:messages][0]).to eq("Search input returned no results")
+      # end
     end
   end
 end

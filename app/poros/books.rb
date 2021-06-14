@@ -10,6 +10,6 @@ class Books
     @destination = query_location
     @forecast = DestinationForecast.new(forecast_data)
     @total_books_found = books_data[:numFound]
-    @books = books_data[:docs].first(query_quantity.to_i).map {|book_data| BookInfo.new(book_data)}
+    @books = books_data[:docs].first(query_quantity).map {|book_data| BookInfo.new(book_data)}
   end
 end

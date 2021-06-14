@@ -47,11 +47,11 @@ RSpec.describe 'Forecast API', :vcr do
     expect(forecasts[:data][:attributes][:hourly_weather][0]).to have_key(:conditions)
     expect(forecasts[:data][:attributes][:hourly_weather][0]).to have_key(:icon)
   end
-
-  xit 'sad path, bad search entry returns 404' do
-    get "/api/v1/forecast?location="
-  
-    expect(response).to_not be_successful
-    expect(response.status).to eq(404)
-  end
+  # 
+  # xit 'sad path, bad search entry returns 404' do
+  #   get "/api/v1/forecast?location="
+  # 
+  #   expect(response).to_not be_successful
+  #   expect(response.status).to eq(404)
+  # end
 end

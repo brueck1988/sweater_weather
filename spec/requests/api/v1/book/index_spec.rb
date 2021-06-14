@@ -33,4 +33,13 @@ RSpec.describe 'Forecast API', :vcr do
     expect(books[:data][:attributes][:books][0][:publisher]).to be_an(Array)
     expect(books[:data][:attributes][:books][0][:publisher][0]).to be_a(String)
   end
+  
+  it 'sad path, sends book info for a given city if quantity is -9 ' do
+    get "/api/v1/book-search?location=denver,co&quantity=-9"
+    books = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+
+    expect(books[:data][:attributes][:books].count).to eq(5)
+  end
 end

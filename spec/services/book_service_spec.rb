@@ -9,11 +9,11 @@ describe BookService, :vcr do
 
         expect(books).to be_a(Hash)
         expect(books[:numFound]).to be_an(Integer)
-        expect(books[:isbn]).to be_an(Array)
-        expect(books[:isbn][0]).to be_a(String)
-        expect(books[:title]).to be_a(String)
-        expect(books[:publisher]).to be_an(Array)
-        expect(books[:publisher][0]).to be_a(String)
+        expect(books[:docs][0][:isbn]).to be_an(Array)
+        expect(books[:docs][0][:isbn][0]).to be_a(String)
+        expect(books[:docs][0][:title]).to be_a(String)
+        expect(books[:docs][0][:publisher]).to be_an(Array)
+        expect(books[:docs][0][:publisher][0]).to be_a(String)
       end
     end
   end
