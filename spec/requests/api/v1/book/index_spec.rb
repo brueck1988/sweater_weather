@@ -7,7 +7,43 @@ RSpec.describe 'Forecast API', :vcr do
     books = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
-
+# {
+#   "data": {
+#     "id": "null",
+#     "type": "books",
+#     "attributes": {
+#       "destination": "denver,co",
+#       "forecast": {
+#         "summary": "Cloudy with a chance of meatballs",
+#         "temperature": "83 F"
+#       },
+#       "total_books_found": 172,
+#       "books": [
+#         {
+#           "isbn": [
+#             "0762507845",
+#             "9780762507849"
+#           ],
+#           "title": "Denver, Co",
+#           "publisher": [
+#             "Universal Map Enterprises"
+#           ]
+#         },
+#         {
+#           "isbn": [
+#             "9780883183663",
+#             "0883183668"
+#           ],
+#           "title": "Photovoltaic safety, Denver, CO, 1988",
+#           "publisher": [
+#             "American Institute of Physics"
+#           ]
+#         },
+#         { ... same format for books 3, 4 and 5 ... }
+#       ]
+#     }
+#   }
+# }
     # expect(books[:data]).to be_a(Hash)
     # expect(books[:data][:id]).to be(nil)
     # expect(books[:data][:type]).to eq("book")
