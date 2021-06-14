@@ -14,12 +14,12 @@ RSpec.describe 'Forecast API', :vcr do
     
     expect(books[:data][:attributes]).to have_key(:destination)
     expect(books[:data][:attributes][:destination]).to be_a(String)
-    expect(books[:data][:attributes]).to have_key(:destination_forecast)
-    expect(books[:data][:attributes][:destination_forecast]).to be_a(Hash)
-    expect(books[:data][:attributes][:destination_forecast]).to have_key(:summary) #conditions
-    expect(books[:data][:attributes][:destination_forecast][:summary]).to be_a(String)
-    expect(books[:data][:attributes][:destination_forecast]).to have_key(:temperature) #temperature
-    expect(books[:data][:attributes][:destination_forecast][:temperature]).to be_a(String) #temperature
+    expect(books[:data][:attributes]).to have_key(:forecast)
+    expect(books[:data][:attributes][:forecast]).to be_a(Hash)
+    expect(books[:data][:attributes][:forecast]).to have_key(:summary) #conditions
+    expect(books[:data][:attributes][:forecast][:summary]).to be_a(String)
+    expect(books[:data][:attributes][:forecast]).to have_key(:temperature) #temperature
+    expect(books[:data][:attributes][:forecast][:temperature]).to be_a(String) #temperature
 
     expect(books[:data][:attributes]).to have_key(:total_books_found)
     expect(books[:data][:attributes][:total_books_found]).to be_an(Integer)

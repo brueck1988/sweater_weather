@@ -5,9 +5,8 @@ module Api
     class BookController < ApplicationController
       def index
         coordinates_data = LocationFacade.get_coordinates(params[:location])
-        forecasts_data = ForecastFacade.get_forecasts(coordinates_data.latitude, coordinates_data.longitude)
-        books = BookFacade.get_books(params[:location], params[:quantity], forecasts_data)
-        render json: BookSerializer.new(books)
+        books = BookFacade.get_books(params[:location], params[:quantity], coordinates_data.latitude, coordinates_data.longitude)
+        render json: BooksSerializer.new(books)
       end
     end
   end
