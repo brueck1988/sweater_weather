@@ -22,7 +22,7 @@ describe LocationService, :vcr do
         location = "ewfhwhowehf"
         coordinate_data = LocationService.get_coordinates(location)
         
-        expect(coordinate_data).to be_a Hash
+        expect(coordinate_data).to be_a(Hash)
         expect(coordinate_data[:info][:statuscode]).to eq(400)
         expect(coordinate_data[:info][:messages][0]).to eq("Search input returned no results")
       end
