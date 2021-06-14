@@ -21,6 +21,7 @@ RSpec.describe DestinationForecast do
            }
           
     destination_forecast = DestinationForecast.new(data)
+    
     expect(destination_forecast).to be_a(DestinationForecast)
     expect(destination_forecast.summary).to eq("clear sky")
     expect(destination_forecast.temperature).to eq("90.93 F")

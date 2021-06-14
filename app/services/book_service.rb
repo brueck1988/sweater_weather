@@ -1,5 +1,5 @@
 class BookService
-  def self.get_forecasts(query_location)
+  def self.get_books(query_location)
     parse_json(conn(query_location).get("/search.json"))
   end
   
