@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ForecastService, :vcr do
+describe ForecastService do
   context 'class methods' do
     context 'get_forecasts' do
       it 'Forecast Service gets forecasts', :vcr do
