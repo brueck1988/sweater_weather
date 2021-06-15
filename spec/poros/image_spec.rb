@@ -1254,7 +1254,6 @@ RSpec.describe Image do
   
     image = Image.new(background_query, background_data)
     expect(image).to be_a(Image)
-    expect(image.credit).to be_a(ImageCredit)
     expect(image.id).to eq(nil)
     expect(image.image).to be_a(ImageUrl)
   end
