@@ -69,6 +69,7 @@ RSpec.describe "Users Response" do
         post "/api/v1/users", headers: headers, params: JSON.generate(user_params)
         created_user = User.last
         json = JSON.parse(response.body, symbolize_names: true)
+        
         expect(json[:error]).to eq("Validation failed: Password can't be blank, Password can't be blank")
         expect(response.status).to eq(400)
         expect(created_user).to be_nil
@@ -85,6 +86,7 @@ RSpec.describe "Users Response" do
         post "/api/v1/users", headers: headers, params: JSON.generate(user_params)
         created_user = User.last
         json = JSON.parse(response.body, symbolize_names: true)
+        
         expect(json[:error]).to eq("Validation failed: Password confirmation doesn't match Password")
         expect(response.status).to eq(400)
         expect(created_user).to be_nil
@@ -105,10 +107,10 @@ RSpec.describe "Users Response" do
                         "password": "pass12311",
                         "password_confirmation": "pass12311"
                       }
-
         headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
         post "/api/v1/users", headers: headers, params: JSON.generate(user2_params)
         json = JSON.parse(response.body, symbolize_names: true)
+        
         expect(json[:error]).to eq("Validation failed: Email has already been taken")
         expect(response.status).to eq(400)
       end
