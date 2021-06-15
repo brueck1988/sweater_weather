@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - openresty
       Date:
-      - Tue, 15 Jun 2021 16:59:23 GMT
+      - Tue, 15 Jun 2021 16:59:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -96,5 +96,5 @@ http_interactions:
         sky","icon":"01d"}],"clouds":2,"pop":0.01,"uvi":12},{"dt":1624302000,"sunrise":1624275132,"sunset":1624329081,"moonrise":1624317300,"moonset":1624265940,"moon_phase":0.38,"temp":{"day":75.54,"min":62.1,"max":82.87,"night":69.26,"eve":79.79,"morn":62.1},"feels_like":{"day":74.35,"night":68.52,"eve":79.79,"morn":60.12},"pressure":1013,"humidity":33,"dew_point":44.31,"wind_speed":15.39,"wind_deg":154,"wind_gust":18.21,"weather":[{"id":800,"main":"Clear","description":"clear
         sky","icon":"01d"}],"clouds":0,"pop":0.37,"uvi":12},{"dt":1624388400,"sunrise":1624361545,"sunset":1624415492,"moonrise":1624408320,"moonset":1624354500,"moon_phase":0.42,"temp":{"day":84.11,"min":62.01,"max":92.7,"night":79.99,"eve":87.04,"morn":62.01},"feels_like":{"day":81.66,"night":79.99,"eve":84.02,"morn":61.05},"pressure":1005,"humidity":25,"dew_point":44.26,"wind_speed":12.33,"wind_deg":164,"wind_gust":21.94,"weather":[{"id":803,"main":"Clouds","description":"broken
         clouds","icon":"04d"}],"clouds":76,"pop":0.37,"uvi":12}]}'
-  recorded_at: Tue, 15 Jun 2021 16:59:23 GMT
+  recorded_at: Tue, 15 Jun 2021 16:59:22 GMT
 recorded_with: VCR 6.0.0

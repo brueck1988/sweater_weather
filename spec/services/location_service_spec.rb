@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe LocationService, :vcr do
+describe LocationService do
   context 'class methods' do
     context 'get_coordinates' do
-      it 'HAPPY PATH -Location Service gets coordinates', :vcr do
+      it 'HAPPY PATH - Location Service gets coordinates', :vcr do
         coordinate_data = LocationService.get_coordinates('denver,co')
         
         expect(coordinate_data).to be_a(Hash)
@@ -18,7 +18,7 @@ describe LocationService, :vcr do
         expect(coordinate_data[:results][0][:locations][0][:latLng][:lng]).to eq(-104.984853)
       end
       
-      it 'SAD PATH -Location Service does not get coordinates when location input is incorrect', :vcr do
+      xit 'SAD PATH -Location Service does not get coordinates when location input is incorrect', :vcr do
         location = "ewfhwhowehf"
         coordinate_data = LocationService.get_coordinates(location)
         

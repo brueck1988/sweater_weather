@@ -3,7 +3,7 @@ require 'rails_helper'
 describe ForecastFacade do
   context "class methods" do
     context "get_forecasts" do
-      it "returns forecast OBJECT" do
+      it "returns forecast OBJECT", :vcr do
         latitude = 39.738453
         longitude = -104.984853
         forecast = ForecastFacade.get_forecasts(latitude, longitude)
