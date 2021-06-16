@@ -22,11 +22,11 @@ You are a back-end developer working on a team that is building an application t
 Your team is working in a service-oriented architecture. The front-end will communicate with your back-end through an API. Your job is to expose that API that satisfies the front-end team’s requirements.
 
 ## Learning Goals
-Expose an API that aggregates data from multiple external APIs
-Expose an API that requires an authentication token
-Expose an API for CRUD functionality
-Determine completion criteria based on the needs of other developers
-Research, select, and consume an API based on your needs as a developer
+1. Expose an API that aggregates data from multiple external APIs
+2. Expose an API that requires an authentication token
+3. Expose an API for CRUD functionality
+4. Determine completion criteria based on the needs of other developers
+5. Research, select, and consume an API based on your needs as a developer
 
 ## Table of Contents
 
