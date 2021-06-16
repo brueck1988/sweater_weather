@@ -5,14 +5,14 @@ RSpec.describe "Sessions Request Api" do
     it "can log in a user" do
       register_params = {
                          "email": "email@example.com",
-                         "password": "hello_world",
-                         "password_confirmation": "hello_world"
+                         "password": "password",
+                         "password_confirmation": "password"
                         }
       register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
       created_user = User.last
       
-      login_params = { "email": "email@example.com", "password": "hello_world" }
+      login_params = { "email": "email@example.com", "password": "password" }
       login_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/sessions", headers: login_headers, params: JSON.generate(login_params)      
       user_response = JSON.parse(response.body, symbolize_names: true)
@@ -33,7 +33,7 @@ RSpec.describe "Sessions Request Api" do
   
   describe "sad paths" do
     it "can not log in an user if user does not exist in the db" do
-      login_params = { "email": "email@example.com", "password": "hello_world" }
+      login_params = { "email": "email@example.com", "password": "password" }
       login_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/sessions", headers: login_headers, params: JSON.generate(login_params)      
       user_response = JSON.parse(response.body, symbolize_names: true)
@@ -47,13 +47,13 @@ RSpec.describe "Sessions Request Api" do
     it "can not log in a user if the password does not match" do
       register_params = {
                          "email": "email@example.com",
-                         "password": "hello_world",
-                         "password_confirmation": "hello_world"
+                         "password": "password",
+                         "password_confirmation": "password"
                         }                    
       register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
   
-      login_params = { "email": "email@example.com", "password": "hello" }
+      login_params = { "email": "email@example.com", "password": "qwerty" }
       login_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/sessions", headers: login_headers, params: JSON.generate(login_params)      
       user_response = JSON.parse(response.body, symbolize_names: true)
@@ -66,14 +66,14 @@ RSpec.describe "Sessions Request Api" do
   
     it "can not log in a user if the email does not match" do
       register_params = {
-                         "email": "email123@example.com",
-                         "password": "hello_world",
-                         "password_confirmation": "hello_world"
+                         "email": "apples@example.com",
+                         "password": "password",
+                         "password_confirmation": "password"
                         }
       register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
   
-      login_params = { "email": "email@example.com", "password": "hello_world" }
+      login_params = { "email": "oranges@example.com", "password": "password" }
       login_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/sessions", headers: login_headers, params: JSON.generate(login_params)    
       user_response = JSON.parse(response.body, symbolize_names: true)
@@ -87,13 +87,13 @@ RSpec.describe "Sessions Request Api" do
     it "can not log in a user if the email is empty" do
       register_params = {
                          "email": "email@example.com",
-                         "password": "hello_world",
-                         "password_confirmation": "hello_world"
+                         "password": "password",
+                         "password_confirmation": "password"
                         }
       register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
   
-      login_params = { "email": "", "password": "hello_world" }
+      login_params = { "email": "", "password": "password" }
       login_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/sessions", headers: login_headers, params: JSON.generate(login_params)
       user_response = JSON.parse(response.body, symbolize_names: true)
@@ -107,8 +107,8 @@ RSpec.describe "Sessions Request Api" do
     it "can not log in a user if the password is empty" do
       register_params = {
                          "email": "email@example.com",
-                         "password": "hello_world",
-                         "password_confirmation": "hello_world"
+                         "password": "password",
+                         "password_confirmation": "password"
                         }
       register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
