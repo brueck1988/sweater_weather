@@ -45,8 +45,8 @@ RSpec.describe "Users Response" do
       it "can not create a new user if the email is missing" do
         user_params = {
                         "email": "",
-                        "password": "pass123",
-                        "password_confirmation": "pass123"
+                        "password": "password",
+                        "password_confirmation": "password"
                       }
         headers = { "CONTENT_TYPE" => "application/json" }
 
@@ -60,7 +60,7 @@ RSpec.describe "Users Response" do
       
       it "can not create a new user if the password is missing" do
         user_params = {
-                        "email": "hello@hello.com",
+                        "email": "email@email.com",
                         "password": "",
                         "password_confirmation": ""
                       }
@@ -78,8 +78,8 @@ RSpec.describe "Users Response" do
       it "can not create a new user if the password and password_confirmation do not match" do
         user_params = {
                         "email": "email@email.com",
-                        "password": "pass123",
-                        "password_confirmation": "pass12332453"
+                        "password": "password",
+                        "password_confirmation": "qwerty"
                       }
         headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
 
@@ -95,8 +95,8 @@ RSpec.describe "Users Response" do
       it "can not create a new user if the email is already taken" do
         user1_params = {
                         "email": "email@example.com",
-                        "password": "pass123",
-                        "password_confirmation": "pass123"
+                        "password": "password",
+                        "password_confirmation": "password"
                       }
         headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
         post "/api/v1/users", headers: headers, params: JSON.generate(user1_params)
@@ -104,8 +104,8 @@ RSpec.describe "Users Response" do
         expect(response.status).to eq(201)
         user2_params = {
                         "email": "email@example.com",
-                        "password": "pass12311",
-                        "password_confirmation": "pass12311"
+                        "password": "password",
+                        "password_confirmation": "password"
                       }
         headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
         post "/api/v1/users", headers: headers, params: JSON.generate(user2_params)
