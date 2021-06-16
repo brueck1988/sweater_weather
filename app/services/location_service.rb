@@ -3,6 +3,8 @@ class LocationService
     parse_json(conn(city_and_state).get("/geocoding/v1/address"))
   end
   
+  private
+  
   def self.conn(city_and_state)
     Faraday.new(url: 'http://www.mapquestapi.com') do |faraday|
       faraday.params['key'] = ENV['key']

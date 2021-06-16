@@ -3,6 +3,8 @@ class ForecastService
     parse_json(conn(latitude, longitude).get("/data/2.5/onecall"))
   end
   
+  private
+  
   def self.conn(latitude, longitude)
     Faraday.new(url: 'https://api.openweathermap.org') do |faraday|
       faraday.params['appid'] = ENV['appid']

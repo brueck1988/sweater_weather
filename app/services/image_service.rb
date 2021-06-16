@@ -3,6 +3,8 @@ class ImageService
     parse_json(conn(image_query).get("/search/photos"))
   end
   
+  private
+  
   def self.conn(image_query)
     Faraday.new(url: 'https://api.unsplash.com') do |faraday|
       faraday.params['client_id'] = ENV['client_id']
