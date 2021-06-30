@@ -14,16 +14,21 @@ RSpec.describe 'Background API' do
       expect(background[:data][:attributes].count).to eq(1)
       expect(background[:data][:attributes]).to have_key(:image)
       expect(background[:data][:attributes][:image]).to have_key(:location)
+      expect(background[:data][:attributes][:image][:location]).to be_a String
       expect(background[:data][:attributes][:image]).to have_key(:image_url)
+      expect(background[:data][:attributes][:image][:image_url]).to be_a String
       expect(background[:data][:attributes][:image]).to have_key(:credit)
       expect(background[:data][:attributes][:image][:credit]).to have_key(:source)
+      expect(background[:data][:attributes][:image][:credit][:source]).to be_a String
       expect(background[:data][:attributes][:image][:credit]).to have_key(:author)
+      expect(background[:data][:attributes][:image][:credit][:author]).to be_a String
       expect(background[:data][:attributes][:image][:credit]).to have_key(:logo)
+      expect(background[:data][:attributes][:image][:credit][:logo]).to be_a String
     end
   end
   
   describe 'Sad path' do
-    it 'bad search entry returns 404', :vcr do
+    it 'blank search entry returns 404', :vcr do
       get "/api/v1/backgrounds?location="
       background = JSON.parse(response.body, symbolize_names: true)
       

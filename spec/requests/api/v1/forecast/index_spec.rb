@@ -15,7 +15,7 @@ RSpec.describe 'Forecast API' do
       expect(forecasts[:data][:attributes]).to have_key(:current_weather)
       expect(forecasts[:data][:attributes]).to have_key(:daily_weather)
       expect(forecasts[:data][:attributes]).to have_key(:hourly_weather)
-      expect(forecasts[:data][:attributes]).to_not have_key(:minutely)
+      expect(forecasts[:data][:attributes]).to_not have_key(:minutely) #########
       expect(forecasts[:data][:attributes]).to_not have_key(:alerts)
       
       expect(forecasts[:data][:attributes][:current_weather]).to be_a(Hash)
