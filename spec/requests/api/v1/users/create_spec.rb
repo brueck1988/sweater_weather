@@ -42,7 +42,7 @@ RSpec.describe "Users Response" do
     end
         
     describe "sad paths" do
-      it "can not create a new user if the email is missing" do
+      it "can not create a new user if email is not provided" do
         user_params = {
                         "email": "",
                         "password": "password",
@@ -58,7 +58,7 @@ RSpec.describe "Users Response" do
         expect(created_user).to be_nil
       end
       
-      it "can not create a new user if the password is missing" do
+      it "can not create a new user if the password is not provided" do
         user_params = {
                         "email": "email@email.com",
                         "password": "",
@@ -92,12 +92,12 @@ RSpec.describe "Users Response" do
         expect(created_user).to be_nil
       end
       
-      it "can not create a new user if the email is already taken" do
+      it "can not create a new user if the email is already registered in the database" do
         user1_params = {
                         "email": "email@example.com",
                         "password": "password",
                         "password_confirmation": "password"
-                      }
+                       }
         headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
         post "/api/v1/users", headers: headers, params: JSON.generate(user1_params)
 
@@ -106,7 +106,7 @@ RSpec.describe "Users Response" do
                         "email": "email@example.com",
                         "password": "password",
                         "password_confirmation": "password"
-                      }
+                       }
         headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
         post "/api/v1/users", headers: headers, params: JSON.generate(user2_params)
         json = JSON.parse(response.body, symbolize_names: true)

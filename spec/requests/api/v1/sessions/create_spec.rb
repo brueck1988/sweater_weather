@@ -32,7 +32,7 @@ RSpec.describe "Sessions Request Api" do
   end
   
   describe "sad paths" do
-    it "can not log in an user if user does not exist in the db" do
+    it "can not log in an user if the user isn't already registered" do
       login_params = { "email": "email@example.com", "password": "password" }
       login_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/sessions", headers: login_headers, params: JSON.generate(login_params)      
@@ -44,7 +44,7 @@ RSpec.describe "Sessions Request Api" do
       expect(user_response[:error]).to eq("invalid parameters")
     end
   
-    it "can not log in a user if the password does not match" do
+    it "can not log in a user if the login password does not match registered password" do
       register_params = {
                          "email": "email@example.com",
                          "password": "password",
@@ -64,7 +64,7 @@ RSpec.describe "Sessions Request Api" do
       expect(user_response[:error]).to eq("invalid parameters")
     end
   
-    it "can not log in a user if the email does not match" do
+    it "can not log in a user if the login email does not match the registered email" do
       register_params = {
                          "email": "apples@example.com",
                          "password": "password",
@@ -84,7 +84,7 @@ RSpec.describe "Sessions Request Api" do
       expect(user_response[:error]).to eq("invalid parameters")
     end
   
-    it "can not log in a user if the email is empty" do
+    it "can not log in a user if the login email is not provided" do
       register_params = {
                          "email": "email@example.com",
                          "password": "password",
@@ -104,7 +104,7 @@ RSpec.describe "Sessions Request Api" do
       expect(user_response[:error]).to eq("invalid parameters")
     end
   
-    it "can not log in a user if the password is empty" do
+    it "can not log in a user if the login password is not provided" do
       register_params = {
                          "email": "email@example.com",
                          "password": "password",
