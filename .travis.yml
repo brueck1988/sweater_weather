@@ -9,10 +9,10 @@ script:
 deploy:
   provider: heroku
   key:
-    secure: sucuI80d9QpTtTCkXxdBkixmMPcVlWdW #Mapquest
+    secure: sucuI80d9QpTtTCkXxdBkixmMPcVlWdW
   appid:
-    secure: 1e9c89b9ce02863b705a2f2871e11611 #Openweather
+    secure: 1e9c89b9ce02863b705a2f2871e11611
   client_id: 
-    secure: ONZklG2uCuIhBq3g99ZlttNWcRTjyTG25phs1Vru9Uo #unsplash
+    secure: ONZklG2uCuIhBq3g99ZlttNWcRTjyTG25phs1Vru9Uo
   app: 
   run: rails db:migrate
