@@ -298,6 +298,7 @@ DEPENDENCIES
   pry
   puma (~> 3.11)
   rails (~> 5.2.6)
+  rake
   rspec-rails
   rubocop-rails
   sass-rails (~> 5.0)
