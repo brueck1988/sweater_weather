@@ -1,0 +1,15 @@
+current directory: /Users/brueck/turing/3module/projects/sweater-weather/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/brueck/.rbenv/versions/2.5.3/bin/ruby -r ./siteconf20210701-49483-1o12hna.rb extconf.rb
+creating Makefile
+
+current directory: /Users/brueck/turing/3module/projects/sweater-weather/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/brueck/turing/3module/projects/sweater-weather/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/brueck/turing/3module/projects/sweater-weather/vendor/bundle/ruby/2.5.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210701-49483-ys5gfh/skiptrace/internal
