@@ -62,6 +62,7 @@ Project is created with:
 * Capybara
 * SimpleCov
 * Heroku
+* Circle CI
 
 ## Versioning
 - Ruby 2.5.3
