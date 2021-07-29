@@ -1,15 +1,15 @@
 class ForecastService
-  def self.get_forecasts(latitude, longitude)
-    parse_json(conn(latitude, longitude).get("/data/2.5/onecall"))
+  def self.get_forecasts(coordinates)
+    parse_json(conn(coordinates).get("/data/2.5/onecall"))
   end
   
   private
   
-  def self.conn(latitude, longitude)
+  def self.conn(coordinates)
     Faraday.new(url: 'https://api.openweathermap.org') do |faraday|
       faraday.params['appid'] = ENV['appid']
-      faraday.params['lat'] = latitude
-      faraday.params['lon'] = longitude
+      faraday.params['lat'] = coordinates.latitude
+      faraday.params['lon'] = coordinates.longitude
       faraday.params['exclude'] = "minutely,alerts"
       faraday.params['units'] = "imperial"
     end

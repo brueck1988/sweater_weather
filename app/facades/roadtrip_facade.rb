@@ -1,24 +1,29 @@
-# frozen_string_literal: true
-
-module Api
-  module V1
-    class RoadtripController < ApplicationController
-      def create
-        user = User.find_by(api_key: params[:api_key])
-        if params[:origin].empty? || params[:destination].empty?
-          require "pry";binding.pry
-          invalid_params
-        elsif user
-          destination_coordinates = LocationFacade.get_coordinates(params[:destination])
-          trip = RoadtripFacade.get_roadtrip(params[:origin], params[:destination], destination_coordinates)
-          render json: RoadtripSerializer.new(trip)
-        else
-          render json: { error: 'Unauthorized' }, status: 401
-        end
-      end
-    end
+class RoadtripFacade
+  def self.get_roadtrip(origin, destination, destination_coordinates)
+    require "pry";binding.pry
+    destination_forecast = ForecastService.get_forecasts(destination_coordinates)
+    roadtrip_eta = RoadtripService.get_roadtrip(origin, destination)
+    
+    
+    
+    
+    # weather_at_eta = WeatherAtEta.new()
+    # Roadtrip.new(origin, destination, travel_time, weather_at_eta)
   end
 end
+
+
+# get destination coordinates
+# get destination forecast
+# get trip data (need to add roadtrip service based on mapquest)
+#   input-origin and destination 
+#   output: travel_time
+# if trip_data.nil?
+# => return impossible_location
+# arrival_time = current time + trip time
+# weather_at_eta = WeatherAtEta.new(arrival_time)
+# Roadtrip.new(origin, destination, travel_time, weather_at_eta)
+
 
 # This POST endpoint should NOT call your endpoint like /api/v1/road_trip?origin=Denver,CO&destination=Pueblo,CO&api_key=abc123, and should NOT send as form data either. You must send a JSON payload in the body of the request
 # in Postman, under the address bar, click on “Body”, select “raw”, which will show a dropdown that probably says “Text” in it, choose “JSON” from the list
