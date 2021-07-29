@@ -26,7 +26,7 @@ RSpec.describe "Roadtrip Request Api" do
       roadtrip_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/roadtrip", headers: roadtrip_headers, params: JSON.generate(roadtrip_params)     
       roadtrip_response = JSON.parse(response.body, symbolize_names: true)
-require "pry";binding.pry
+
       expect(roadtrip_response).to have_key(:data)
       expect(roadtrip_response[:data]).to have_key(:id)
       expect(roadtrip_response[:data]).to have_key(:type)
