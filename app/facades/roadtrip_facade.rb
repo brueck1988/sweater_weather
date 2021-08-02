@@ -1,7 +1,7 @@
 class RoadtripFacade
   def self.get_roadtrip(origin, destination, destination_coordinates)
     destination_forecast = ForecastService.get_forecasts(destination_coordinates)
-    roadtrip_data = RoadtripService.get_roadtrip(origin, destination)
+    roadtrip_data = LocationService.get_roadtrip(origin, destination)
     weather_at_eta = WeatherAtEta.new(destination_forcast, roadtrip_data)
     Roadtrip.new(origin, destination, travel_time, weather_at_eta)
   end
