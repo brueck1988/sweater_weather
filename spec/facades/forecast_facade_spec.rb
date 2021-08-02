@@ -4,9 +4,10 @@ describe ForecastFacade do
   context "class methods" do
     context "get_forecasts" do
       it "returns forecast OBJECT", :vcr do
-        latitude = 39.738453
-        longitude = -104.984853
-        forecast = ForecastFacade.get_forecasts(latitude, longitude)
+        destination = "Denver, CO"
+        destination_coordinates = LocationFacade.get_coordinates(destination)
+        forecast = ForecastFacade.get_forecasts(destination_coordinates)
+        
         expect(forecast).to be_a(Forecast)
         expect(forecast.current_weather).to be_a(CurrentWeather)
                 
@@ -21,3 +22,4 @@ describe ForecastFacade do
     end
   end
 end
+

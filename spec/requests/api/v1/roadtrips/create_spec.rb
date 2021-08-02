@@ -11,13 +11,7 @@ RSpec.describe "Roadtrip Request Api" do
       register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
       created_user = User.last
-      # 
-      # login_params = { "email": "email@example.com", "password": "password" }
-      # login_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
-      # post "/api/v1/sessions", headers: login_headers, params: JSON.generate(login_params)    
-      # user_response = JSON.parse(response.body, symbolize_names: true)
-
-
+ 
       roadtrip_params = {
                           "origin": "Denver,CO",
                           "destination": "Pueblo,CO",
