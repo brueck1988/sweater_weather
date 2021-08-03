@@ -3,8 +3,14 @@ class WeatherAtEta
               :conditions
 
   def initialize(forecast, travel_time)
-    @temperature = forecast[:hourly][travel_time.to_i][:temp]
-    @conditions = forecast[:hourly][travel_time.to_i][:weather][0][:description]
+    if travel_time == "impossible route"
+      @temperature = "" 
+      @conditions = ""
+    else
+      @temperature = forecast[:hourly][travel_time.to_i][:temp]
+      @conditions = forecast[:hourly][travel_time.to_i][:weather][0][:description]
+    end
   end
 end
 
+  
