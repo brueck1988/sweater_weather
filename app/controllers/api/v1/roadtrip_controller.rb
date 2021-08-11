@@ -12,7 +12,7 @@ module Api
           trip = RoadtripFacade.get_roadtrip(params[:origin], params[:destination], destination_coordinates)
           render json: RoadtripSerializer.new(trip)
         else
-          render json: { errors: 'Unauthorized' }, status: 401
+          render json: { errors: 'Unauthorized' }, status: :unauthorized
         end
       end
     end
