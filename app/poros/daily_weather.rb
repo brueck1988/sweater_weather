@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DailyWeather
   attr_reader :date,
               :sunrise,
@@ -6,7 +8,7 @@ class DailyWeather
               :min_temp,
               :conditions,
               :icon
-  
+
   def initialize(response)
     @date = Time.at(response[:dt])
     @sunrise = Time.at(response[:sunrise])
