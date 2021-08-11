@@ -39,9 +39,9 @@ RSpec.describe "Sessions Request Api" do
       user_response = JSON.parse(response.body, symbolize_names: true)
   
       expect(response.status).to eq(400)
-      expect(user_response).to have_key(:error)
+      expect(user_response).to have_key(:errors)
       expect(user_response).to_not have_key(:data)
-      expect(user_response[:error]).to eq("invalid parameters")
+      expect(user_response[:errors]).to eq("invalid parameters")
     end
   
     it "can not log in a user if the login password does not match registered password" do
@@ -59,9 +59,9 @@ RSpec.describe "Sessions Request Api" do
       user_response = JSON.parse(response.body, symbolize_names: true)
   
       expect(response.status).to eq(400)
-      expect(user_response).to have_key(:error)
+      expect(user_response).to have_key(:errors)
       expect(user_response).to_not have_key(:data)
-      expect(user_response[:error]).to eq("invalid parameters")
+      expect(user_response[:errors]).to eq("invalid parameters")
     end
   
     it "can not log in a user if the login email does not match the registered email" do
@@ -79,9 +79,9 @@ RSpec.describe "Sessions Request Api" do
       user_response = JSON.parse(response.body, symbolize_names: true)
   
       expect(response.status).to eq(400)
-      expect(user_response).to have_key(:error)
+      expect(user_response).to have_key(:errors)
       expect(user_response).to_not have_key(:data)
-      expect(user_response[:error]).to eq("invalid parameters")
+      expect(user_response[:errors]).to eq("invalid parameters")
     end
   
     it "can not log in a user if the login email is not provided" do
@@ -99,9 +99,9 @@ RSpec.describe "Sessions Request Api" do
       user_response = JSON.parse(response.body, symbolize_names: true)
   
       expect(response.status).to eq(400)
-      expect(user_response).to have_key(:error)
+      expect(user_response).to have_key(:errors)
       expect(user_response).to_not have_key(:data)
-      expect(user_response[:error]).to eq("invalid parameters")
+      expect(user_response[:errors]).to eq("invalid parameters")
     end
   
     it "can not log in a user if the login password is not provided" do
@@ -119,9 +119,9 @@ RSpec.describe "Sessions Request Api" do
       user_response = JSON.parse(response.body, symbolize_names: true)
   
       expect(response.status).to eq(400)
-      expect(user_response).to have_key(:error)
+      expect(user_response).to have_key(:errors)
       expect(user_response).to_not have_key(:data)
-      expect(user_response[:error]).to eq("invalid parameters")
+      expect(user_response[:errors]).to eq("invalid parameters")
     end
   end
 end

@@ -8,7 +8,7 @@ module Api
         if user && user.authenticate(params[:password])
           render json: UsersSerializer.new(user), status: 200
         else
-           render json: { error: 'invalid parameters' }, status: :bad_request
+           render json: { errors: 'invalid parameters' }, status: :bad_request
         end
       end
     end
