@@ -1,25 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe "Roadtrip Request Api" do
+  before :each do
+    register_params = {
+      "email": "email@example.com",
+      "password": "password",
+      "password_confirmation": "password"
+    }
+    register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
+    post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
+    @created_user = User.last
+  end
+  
   describe "happy path" do
     it "can return roadtrip information" do
-      register_params = {
-                         "email": "email@example.com",
-                         "password": "password",
-                         "password_confirmation": "password"
-                        }
-      register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
-      post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
-      register_response = JSON.parse(response.body, symbolize_names: true)
-      created_user = User.last
-      expect(register_response[:data][:attributes][:email]).to eq(created_user.email)
-      expect(register_response[:data][:type]).to eq('users')
-      expect(response.status).to eq(201)
       
       roadtrip_params = {
                           "origin": "Denver,CO",
                           "destination": "Pueblo,CO",
-                          "api_key": created_user.api_key
+                          "api_key": @created_user.api_key
                         }
       roadtrip_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/roadtrip", headers: roadtrip_headers, params: JSON.generate(roadtrip_params)     
@@ -46,23 +45,10 @@ RSpec.describe "Roadtrip Request Api" do
     end
     
     it "returns empty weather_at_eta if the route is impossible" do
-      register_params = {
-                         "email": "email@example.com",
-                         "password": "password",
-                         "password_confirmation": "password"
-                        }
-      register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
-      post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
-      register_response = JSON.parse(response.body, symbolize_names: true)
-      created_user = User.last
-      expect(register_response[:data][:attributes][:email]).to eq(created_user.email)
-      expect(register_response[:data][:type]).to eq('users')
-      expect(response.status).to eq(201)
-      
       roadtrip_params = {
                           "origin": "Colorado",
                           "destination": "Germany",
-                          "api_key": created_user.api_key
+                          "api_key": @created_user.api_key
                         }
       roadtrip_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/roadtrip", headers: roadtrip_headers, params: JSON.generate(roadtrip_params)     
@@ -93,23 +79,10 @@ RSpec.describe "Roadtrip Request Api" do
   
   describe "sad paths" do
     it "returns 400 status for missing origin" do
-      register_params = {
-                         "email": "email@example.com",
-                         "password": "password",
-                         "password_confirmation": "password"
-                        }
-      register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
-      post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
-      register_response = JSON.parse(response.body, symbolize_names: true)
-      created_user = User.last
-      expect(register_response[:data][:attributes][:email]).to eq(created_user.email)
-      expect(register_response[:data][:type]).to eq('users')
-      expect(response.status).to eq(201)
-      
       roadtrip_params = {
                           "origin": "",
                           "destination": "Pueblo, CO",
-                          "api_key": created_user.api_key
+                          "api_key": @created_user.api_key
                         }
       roadtrip_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/roadtrip", headers: roadtrip_headers, params: JSON.generate(roadtrip_params)     
@@ -121,23 +94,10 @@ RSpec.describe "Roadtrip Request Api" do
     end
     
     it "returns 400 status for missing destination" do
-      register_params = {
-                         "email": "email@example.com",
-                         "password": "password",
-                         "password_confirmation": "password"
-                        }
-      register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
-      post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
-      register_response = JSON.parse(response.body, symbolize_names: true)
-      created_user = User.last
-      expect(register_response[:data][:attributes][:email]).to eq(created_user.email)
-      expect(register_response[:data][:type]).to eq('users')
-      expect(response.status).to eq(201)
-      
       roadtrip_params = {
                           "origin": "Denver,CO",
                           "destination": "",
-                          "api_key": created_user.api_key
+                          "api_key": @created_user.api_key
                         }
       roadtrip_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
       post "/api/v1/roadtrip", headers: roadtrip_headers, params: JSON.generate(roadtrip_params)     
@@ -149,19 +109,6 @@ RSpec.describe "Roadtrip Request Api" do
     end
     
     it "returns 401 status for Unauthorized API Key" do
-      register_params = {
-                         "email": "email@example.com",
-                         "password": "password",
-                         "password_confirmation": "password"
-                        }
-      register_headers = { "CONTENT_TYPE" => "application/json", "ACCEPT" => "application/json" }
-      post "/api/v1/users", headers: register_headers, params: JSON.generate(register_params)
-      register_response = JSON.parse(response.body, symbolize_names: true)
-      created_user = User.last
-      expect(register_response[:data][:attributes][:email]).to eq(created_user.email)
-      expect(register_response[:data][:type]).to eq('users')
-      expect(response.status).to eq(201)
-      
       roadtrip_params = {
                           "origin": "Denver,CO",
                           "destination": "Pueblo,CO",
