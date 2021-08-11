@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class HourlyWeather
   attr_reader :time,
               :temperature,
               :conditions,
               :icon
-  
+
   def initialize(response)
     @time = Time.at(response[:dt])
     @temperature = response[:temp]

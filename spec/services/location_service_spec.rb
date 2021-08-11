@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe LocationService do
@@ -5,7 +7,7 @@ describe LocationService do
     context 'get_coordinates' do
       it 'HAPPY PATH - Location Service gets coordinates', :vcr do
         coordinate_data = LocationService.get_coordinates('denver,co')
-        
+
         expect(coordinate_data).to be_a(Hash)
         expect(coordinate_data[:results]).to be_a(Array)
         expect(coordinate_data[:results][0]).to be_a(Hash)

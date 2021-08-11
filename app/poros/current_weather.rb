@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CurrentWeather
   attr_reader :datetime,
               :sunrise,
@@ -9,7 +11,7 @@ class CurrentWeather
               :visibility,
               :conditions,
               :icon
-  
+
   def initialize(response)
     @datetime = Time.at(response[:dt])
     @sunrise = Time.at(response[:sunrise])
