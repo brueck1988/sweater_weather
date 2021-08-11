@@ -4,7 +4,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<key>') { ENV['key'] }
   config.filter_sensitive_data('<appid>') { ENV['appid'] }
   config.configure_rspec_metadata!
-  config.default_cassette_options = { re_record_interval: 1.days }
+  config.default_cassette_options = { re_record_interval: 7.days }
   config.allow_http_connections_when_no_cassette = true
 end
 
