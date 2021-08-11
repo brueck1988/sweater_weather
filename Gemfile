@@ -14,7 +14,7 @@ gem 'fast_jsonapi'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -30,7 +30,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'faraday'
 gem "figaro"
 gem 'rake'
-gem 'graphql'
+# gem 'graphql'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
@@ -38,14 +38,14 @@ gem 'graphql'
 group :development, :test do
   gem 'pry'
   gem 'shoulda-matchers'
-  gem 'travis'
+  # gem 'travis'
 end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop-rails'
   gem 'web-console', '>= 3.3.0'
-  gem 'graphiql-rails'
+  # gem 'graphiql-rails'
   gem 'faker'
 end
 
