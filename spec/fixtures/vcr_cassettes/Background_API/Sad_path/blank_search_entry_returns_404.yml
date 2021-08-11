@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Faraday v1.4.2
+      - Faraday v1.5.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -34,6 +34,8 @@ http_interactions:
       - Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining
       Cache-Control:
       - no-cache, no-store, must-revalidate
+      Warning:
+      - The tags property in this endpoint is deprecated. https://changelog.unsplash.com/deprecations/2021/07/12/tags-search-deprecation.html
       X-Total:
       - '0'
       X-Per-Page:
@@ -45,11 +47,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '50'
       X-Ratelimit-Remaining:
-      - '49'
+      - '48'
       X-Request-Id:
-      - 4b0ebe79-c413-4372-9bd5-ca6f3497895e
+      - 1dd404fa-951d-4646-873a-ff97a7d96901
       X-Runtime:
-      - '0.021955'
+      - '0.033031'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Via:
@@ -57,21 +59,21 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Wed, 16 Jun 2021 16:56:24 GMT
+      - Wed, 11 Aug 2021 19:51:51 GMT
       Age:
-      - '67227'
+      - '0'
       X-Served-By:
-      - cache-dca17753-DCA, cache-den8276-DEN
+      - cache-dca17774-DCA, cache-den8220-DEN
       X-Cache:
       - MISS, HIT
       X-Cache-Hits:
       - 0, 1
       X-Timer:
-      - S1623862585.595370,VS0,VE1
+      - S1628711512.674941,VS0,VE78
       Vary:
       - Accept-Encoding, Origin,Authorization,client-geo-region
     body:
       encoding: ASCII-8BIT
       string: '{"total":0,"total_pages":0,"results":[]}'
-  recorded_at: Wed, 16 Jun 2021 16:56:24 GMT
+  recorded_at: Wed, 11 Aug 2021 19:51:51 GMT
 recorded_with: VCR 6.0.0

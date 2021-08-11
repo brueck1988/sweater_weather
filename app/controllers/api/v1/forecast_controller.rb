@@ -5,7 +5,7 @@ module Api
     class ForecastController < ApplicationController
       def index
         coordinates = LocationFacade.get_coordinates(params[:location])
-        forecasts = ForecastFacade.get_forecasts(coordinates.latitude, coordinates.longitude)
+        forecasts = ForecastFacade.get_forecasts(coordinates)
         render json: ForecastSerializer.new(forecasts)
       rescue NoMethodError
         render json: { errors: 'Please provide location param' }, status: :not_found

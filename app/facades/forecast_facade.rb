@@ -1,6 +1,6 @@
 class ForecastFacade
-  def self.get_forecasts(latitude, longitude)
-    forecasts = ForecastService.get_forecasts(latitude, longitude)
+  def self.get_forecasts(coordinates)
+    forecasts = ForecastService.get_forecasts(coordinates)
     Forecast.new(forecasts)
   end
 end

@@ -4,10 +4,10 @@ describe ForecastService do
   context 'class methods' do
     context 'get_forecasts' do
       it 'Forecast Service gets forecasts', :vcr do
-        latitude = 39.738453
-        longitude = -104.984853
-
-        forecasts = ForecastService.get_forecasts(latitude, longitude)
+        destination = "Denver, CO"
+        destination_coordinates = LocationFacade.get_coordinates(destination)
+        forecasts = ForecastService.get_forecasts(destination_coordinates)
+        
         expect(forecasts).to be_a(Hash)
         expect(forecasts[:current]).to be_a(Hash)
         expect(forecasts[:current][:weather][0][:description]).to be_a(String) #Conditions
