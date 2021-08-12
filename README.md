@@ -58,11 +58,20 @@ RSpec testing suite is utilized for testing this application.
 Project is created with:
 * Ruby version 2.5.3
 * Rails version 5.2.6
-* RSpec
-* Capybara
-* SimpleCov
 * Heroku
 * Circle CI
+* RSpec
+* Capybara
+* Shoulda-Matchers
+* SimpleCov
+* BCrypt
+* Fast_JSONAPI
+* Figaro
+* Faraday
+* Factory_bot
+* Rubocop
+* VCR
+* Webmock
 
 ## Versioning
 - Ruby 2.5.3
@@ -75,12 +84,13 @@ Project is created with:
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
+
 ## Endpoints:
 ### User Registration Endpoint:
 #### Request Format:
-```
-`POST https://ancient-ridge-85691.herokuapp.com/api/v1/users`
-```
+
+`POST https://sweater-weather-ab.herokuapp.com/api/v1/users`
+
 ```json
 request_body = {
   "email": "whatever@example.com",
@@ -103,9 +113,8 @@ response_body = {
 ```
 ### User Login Endpoint:
 #### Request Format:
-```
-`POST https://ancient-ridge-85691.herokuapp.com/api/v1/sessions`
-```
+
+`POST https://sweater-weather-ab.herokuapp.com/api/v1/sessions`
 ```json
 request_body = {
   "email": "whatever@example.com",
@@ -126,38 +135,47 @@ response_body = {
 }
 ```
 ### Background Image Data Endpoint: 
-#### Request Format:
-```
-`GET https://ancient-ridge-85691.herokuapp.com/api/v1/backgrounds?location=denver,co`
-```
 External APIs used: [Unsplash](https://api.unsplash.com)
+#### Request Format:
+
+`GET https://sweater-weather-ab.herokuapp.com/api/v1/backgrounds`
+```json
+request_body = {
+                "location": "Denver,CO"
+               }
+```
 #### Response Format:
 ```json
 response_body = {
-  "data": {
-      "id": null,
-      "type": "image",
-      "attributes": {
-          "image": {
-              "location": "denver, co",
-              "image_url": "https://images.unsplash.com/photo-1619856699906-09e1f58c98b1?ixid=MnwyMzk1NjR8MHwxfHNlYXJjaHwxfHxkZW52ZXIlMkMlMjBjb3xlbnwwfHx8fDE2MjM3Nzg5NzU&ixlib=rb-1.2.1",
-              "credit": {
-                  "source": "unsplash.com",
-                  "author": "Ryan De Hamer",
-                  "logo": "https://unsplash.com/@rdehamer"
+                  "data": {
+                      "id": null,
+                      "type": "image",
+                      "attributes": {
+                          "image": {
+                              "location": "denver, co",
+                              "image_url": "https://images.unsplash.com/photo-1619856699906-09e1f58c98b1?ixid=MnwyMzk1NjR8MHwxfHNlYXJjaHwxfHxkZW52ZXIlMkMlMjBjb3xlbnwwfHx8fDE2MjM3Nzg5NzU&ixlib=rb-1.2.1",
+                              "credit": {
+                                  "source": "unsplash.com",
+                                  "author": "Ryan De Hamer",
+                                  "logo": "https://unsplash.com/@rdehamer"
+                                }
+                            }
+                        }
+                    }
                 }
-            }
-        }
-    }
-}
 ```
 
 #### Forecast Data Endpoint: 
-#### Request Format:
-```
-`GET https://ancient-ridge-85691.herokuapp.com/api/v1/forecast?location=denver,co`
-```
 External APIs used: [Open Weather](https://api.openweathermap.org) & [Map Quest](http://www.mapquestapi.com)
+#### Request Format:
+
+`GET https://sweater-weather-ab.herokuapp.com/api/v1/forecast`
+```json
+request_body = {
+                "location": "Denver,CO"
+               }
+```
+
 #### Response Format:
 
 ```json
@@ -278,4 +296,37 @@ response_body = {
         }
     }
 }              
+```
+
+#### Roadtrip Data Endpoint: 
+External APIs used: [Open Weather](https://api.openweathermap.org) & [Map Quest](http://www.mapquestapi.com)
+#### Request Format:
+
+`POST https://sweater-weather-ab.herokuapp.com/api/v1/roadtrip`
+
+```json
+request_body = {
+                  "origin": "Denver,CO",
+                  "destination": "Pueblo,CO",
+                  "api_key": "8ea50542a3b42c1808f6576a8e2e4aa1"
+               }
+```
+#### Response Format:
+
+```json
+response_body = {
+                  "data": {
+                      "id": null,
+                      "type": "roadtrip",
+                      "attributes": {
+                          "start_city": "denver, co",
+                          "end_city": "pueblo, co",
+                          "travel_time": "02:01:49",
+                          "weather_at_eta": {
+                              "temperature": 93.27,
+                              "conditions": "scattered clouds"
+                          }
+                      }
+                  }
+                }              
 ```

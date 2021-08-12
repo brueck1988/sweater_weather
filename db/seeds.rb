@@ -6,3 +6,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+  Customer.create!(
+                    email: Faker::Internet.email,
+                    password_digest: Faker::Crypto.sha256,
+                    api_key: Faker::Crypto.sha256,
+                  )
